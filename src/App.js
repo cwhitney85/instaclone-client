@@ -6,6 +6,13 @@ import Nav from './components/Nav'
 import Welcome from './components/Welcome.jsx'
 
 export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      
+    }
+  }
+
   render() {
     return (
       <div>
