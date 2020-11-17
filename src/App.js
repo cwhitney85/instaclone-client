@@ -6,7 +6,7 @@ import Nav from './components/Nav'
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <Nav/>
         <h1>InstaClone</h1>
       </div>
