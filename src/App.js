@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import axios from 'axios'
 import Nav from './components/Nav'
+import Profile from './components/Profile'
 import Welcome from './components/Welcome.jsx'
 
 export default class App extends Component {
@@ -15,11 +16,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        <Nav/>
-        <Welcome />
-        <h1>InstaClone</h1>
-      </div>
+      <Router>
+        <div className="container">
+          <Nav/>
+          <Welcome />
+          <Route path="/profile" component={Profile}/>
+        </div>
+      </Router>
     )
   }
 }
