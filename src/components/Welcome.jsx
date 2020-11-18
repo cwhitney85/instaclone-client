@@ -25,8 +25,8 @@ export default class Welcome extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        const package = {username: this.state.username, password:this.state.password}
-        axios.post(baseURL + '/placeholder-route/',package)
+        const payload = {username: this.state.username, password:this.state.password}
+        axios.post(baseURL + '/placeholder-route/',payload)
         .then(res => res.json())
         // if(this.state.username === this.state.myName && this.state.password === this.state.myPass) {
         //     document.getElementById('welcome').innerHTML = 'Welcome'
