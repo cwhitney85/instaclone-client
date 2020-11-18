@@ -18,11 +18,16 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div>
           <Nav/>
-          <Welcome />
-          <Route path="/profile" component={Profile}/>
-          <Home />
+          <Switch>
+            <div className="container">
+              <Route path="/welcome" component={Welcome} />
+              <Route path="/profile" component={Profile}/>
+              <Route path="/" exact component={Home} />
+            </div>
+          </Switch>
+
         </div>
       </Router>
     )
