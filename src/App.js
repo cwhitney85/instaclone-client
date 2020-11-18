@@ -5,6 +5,7 @@ import axios from 'axios'
 import Nav from './components/Nav'
 import Profile from './components/Profile'
 import Welcome from './components/Welcome.jsx'
+import Home from './components/Home'
 
 export default class App extends Component {
   constructor(props) {
@@ -17,10 +18,16 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div>
           <Nav/>
-          <Welcome />
-          <Route path="/profile" component={Profile}/>
+          <Switch>
+            <div className="container">
+              <Route path="/welcome" component={Welcome} />
+              <Route path="/profile" component={Profile}/>
+              <Route path="/" exact component={Home} />
+            </div>
+          </Switch>
+
         </div>
       </Router>
     )
