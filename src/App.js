@@ -17,11 +17,13 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div>
           <Nav/>
           <Switch>
-            <Route path="/" exact component={Welcome} />
-            <Route path="/profile" component={Profile}/>
+            <div className="container">
+              <Route path="/" exact component={Welcome} />
+              <Route path="/profile" component={Profile}/>
+            </div>
           </Switch>
         </div>
       </Router>
