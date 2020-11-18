@@ -10,10 +10,10 @@ export default class Nav extends Component {
         </Link>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav flex-row ml-auto d-flex">
-            <Link to="/">
+            <Link to="/welcome">
               <li className="nav-item nav-link">Sign up</li>
             </Link>
-            <Link to="/">
+            <Link to="/welcome">
               <li className="nav-item nav-link">Log In</li>
             </Link>
             <Link to="/profile">
