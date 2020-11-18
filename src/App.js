@@ -6,6 +6,7 @@ import Nav from './components/Nav'
 import Profile from './components/Profile'
 import Welcome from './components/Welcome.jsx'
 import Home from './components/Home'
+import CreateFeed from './components/CreateFeed'
 
 export default class App extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ export default class App extends Component {
               <Route path="/welcome" component={Welcome} />
               <Route path="/profile" component={Profile}/>
               <Route path="/" exact component={Home} />
+              <Route path="/create" component={CreateFeed}/>
             </div>
           </Switch>
 
