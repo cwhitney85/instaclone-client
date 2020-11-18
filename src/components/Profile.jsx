@@ -18,7 +18,7 @@ export default class Profile extends Component {
           {this.state.feeds.map((feed, index) => {
             return(
               <div key={index} className="one-third column">
-                <img className="profile-img" src={feed} alt=""/>
+                  <img className="profile-img" src={feed} alt=""/>
               </div>
             )
           })}
