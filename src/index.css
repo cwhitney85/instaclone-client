@@ -17,3 +17,10 @@ code {
   width: 300px;
   margin: 5px;
 }
+
+.home-card {
+  max-width: 500px;
+  height: max-content;
+  margin: 26px auto;
+
+}
