@@ -23,7 +23,6 @@ export default class Profile extends Component {
       .then(data => {
         return data.json()
       }).then(parsedData => {
-        console.log(parsedData)
         this.setState({
           avatar: parsedData.avatar,
           feeds: parsedData.feeds

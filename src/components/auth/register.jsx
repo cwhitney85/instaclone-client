@@ -1,8 +1,10 @@
 import React, { Component, useState, useContext } from 'react'
 import { Link, useHistory } from "react-router-dom";
-import Axios from "axios";
+import axios from "axios";
 import ErrorNotice from "../ErrorNotice";
 import Profile from '../Profile'
+
+const baseURL = 'http://localhost:3003'
 
 export default class Register extends Component {
   constructor(props) {
@@ -14,12 +16,25 @@ export default class Register extends Component {
       passwordCheck: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   
   handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value
     })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    fetch(baseURL + '/users', {
+      method: 'POST',
+      body: JSON.stringify({displayName: this.state.displayName, email: this.state.email, password: this.state.password}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+      .then(data => console.log(data))
   }
   render() {
     return (
@@ -38,9 +53,9 @@ export default class Register extends Component {
             <label htmlFor='passwordCheck'>Verify Password: </label>
             <input type="password" name="passwordCheck" id="passwordCheck" onChange={this.handleChange}/>
             <br/>
-            <Link to="/profile">
+            
             <input type='submit' value='Submit' />
-            </Link>
+            
         </form>
       </div>
     )
