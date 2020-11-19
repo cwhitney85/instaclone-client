@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../ErrorNotice";
 
@@ -11,7 +10,7 @@ export default function Register() {
   const [displayName, setDisplayName] = useState();
   const [error, setError] = useState();
 
-  const { setUserData } = useContext(UserContext);
+  //const { setUserData } = useContext(UserContext);
   const history = useHistory();
 
   const submit = async (e) => {
@@ -24,7 +23,7 @@ export default function Register() {
         email,
         password,
       });
-      setUserData({
+/*       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user,
       });
@@ -33,7 +32,7 @@ export default function Register() {
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);
     }
-  };
+  }; */
 
   return (
     <div className="page">
