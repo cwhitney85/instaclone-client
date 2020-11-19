@@ -1,31 +1,29 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import axios from "axios"
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default class CreateFeed extends Component {
     constructor(props) {
         super(props)
         this.state = {
             title: "",
-            body: "",
-            image: "",
-            url: ""
+            selectedFile: null,
+            fileName: "",
+            loaded: 0
         }
-        this.handleChange = this.handleChange.bind(this)
+        this.onChangeTitle = this.onChangeTitle.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.feedDetails = this.feedDetails.bind(this)
+        this.onChangeUpload = this.onChangeUpload.bind(this)
+        this.onClickUpload = this.onClickUpload.bind(this)
     }
 
-    // componentDidMount() {
-    //     this.handleSubmit()
-    //     this.feedDetails()
-    // }
-
-    // componentDidUpdate() {
-    //     this.handleChange()
-    // }
-
-    handleChange(event) {
-        this.setState({ [event.target.id]: event.target.value })
+    onChangeTitle(event) {
+        this.setState({ 
+            [event.target.id]: event.target.value
+        })
     }
 
     handleSubmit(event) {
@@ -33,8 +31,8 @@ export default class CreateFeed extends Component {
             method: "post",
             body: JSON.stringify({
                 title: this.state.title, 
-                image: this.state.image,
-                url: this.state.url
+                selectedFile: this.state.selectedFile,
+                fileName: this.state.fileName
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -48,19 +46,24 @@ export default class CreateFeed extends Component {
         })
     }
 
-    feedDetails() {
-        const formData = new FormData()
-        formData.append("file", this.state.image)
-        formData.append("upload_preset", "instaClone")
-        formData.append("cloud_name", "calmworld")
-        fetch("https://api.cloudinary.com/v1_1/calmworld/image/upload", {
-            method: "post",
-            body: formData
-        }).then(res => res.json())
-        .then(formData => {
-            this.state.url(formData.url)
+    onChangeUpload(event) {
+        console.log(event.target.files[0])
+            this.setState({ 
+                selectedFile: event.target.files[0],
+                fileName: event.target.files[0].name,
+                loaded: 0
+            })
+    }
+
+    onClickUpload = () => {
+        const data = new FormData()
+        data.append('file', this.state.selectedFile)
+        axios.post("http://localhost:3003/upload", data, { // receive two parameter endpoint url ,form data 
+        }).then(res => { // then print response status
+        console.log(res.statusText)
+        toast.success('upload success')
         }).catch(err => {
-            console.log(err)
+            toast.error('upload file')
         })
     }
     
@@ -70,23 +73,27 @@ export default class CreateFeed extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="input-group mb-3">
                         <div className="custom-file">
-                            <input type="file" className="custom-file-input" id="inputGroupFile01"/>
-                            <label className="custom-file-label" for="inputGroupFile01" aria-describedby="inputGroupFileAddon01">Choose file</label>
+                            <input type="file" name="file" value="" onChange={this.onChangeUpload}className="custom-file-input" id="inputGroupFile01"/>
+                            <label className="custom-file-label" htmlFor="file" name="file" aria-describedby="inputGroupFileAddon01">Choose file</label>
                         </div>
                         <div className="input-group-append">
-                            <span className="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                            <span onClick={this.onClickUpload} className="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div className="form-group">
+                        <ToastContainer />
                         </div>
                     </div>
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <span className="input-group-text">Title</span>
                         </div>
-                        <input type="text" onChange={this.handleChange} value={this.state.title} className="form-control"></input>
+                        <input type="text" onChange={this.onChangeTitle} value={this.state.title} className="form-control"></input>
                     </div>
                     <br />
-                    <button onClick={this.feedDetails} className="btn btn-primary" type="submit" value="Submit">Submit</button>
+                    <button className="btn btn-primary" type="submit" value="Submit">Submit</button>
                 </form>
             </div>
         )
     }
 }
+
