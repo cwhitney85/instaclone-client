@@ -7,6 +7,8 @@ import Profile from './components/Profile'
 import Welcome from './components/Welcome.jsx'
 import Home from './components/Home'
 import CreateFeed from './components/CreateFeed'
+import Register from './components/auth/register'
+
 
 
 export default class App extends Component {
@@ -29,6 +31,7 @@ export default class App extends Component {
               <Route path="/profile" component={Profile}/>
               <Route path="/" exact component={Home} />
               <Route path="/create" component={CreateFeed}/>
+              <Route path="/register" component={Register}/>
             </div>
           </Switch>
 
