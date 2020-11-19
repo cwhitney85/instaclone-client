@@ -7,6 +7,7 @@ import Profile from './components/Profile'
 import Welcome from './components/Welcome.jsx'
 import Home from './components/Home'
 import CreateFeed from './components/CreateFeed'
+import Show from './components/Show.jsx'
 
 
 export default class App extends Component {

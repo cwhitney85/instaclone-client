@@ -18,8 +18,14 @@ export default class Profile extends Component {
   getFeeds() {
     axios.get(baseURL + '/feeds')
     .then(res => {
+      //let matchedPosts=[]
+      //for(let i=0;i<res.data.length;i++)
+      //if(this.state.username===res.data[i].username)
+      //matchedPosts.push(res.data[i])
+      //else do nothing
         this.setState({
             feeds: res.data
+            //feeds: matchedPosts
         })
     })
     .catch(error => {
