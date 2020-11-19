@@ -74,7 +74,6 @@ export default class Home extends Component {
             <div className="home">
                 <button onClick={this.redirectToCreate}>Create</button>
                 {this.state.feeds.map(feed => {
-                    console.log(feed)
                     return (
                         <div className="card home-card">
                             <h5>{feed.username}</h5>
@@ -89,8 +88,7 @@ export default class Home extends Component {
                             </div>
                         </div>
                     )
-                })}
-                
+                })}               
             </div>
         )
     }
