@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
-import ErrorNotice from "../misc/ErrorNotice";
+import ErrorNotice from "../ErrorNotice";
 
 export default function Register() {
   const [email, setEmail] = useState();
@@ -19,8 +19,8 @@ export default function Register() {
 
     try {
       const newUser = { email, password, passwordCheck, displayName };
-      await Axios.post("http://localhost:5000/users/register", newUser);
-      const loginRes = await Axios.post("http://localhost:5000/users/login", {
+      await Axios.post("http://localhost:3003/users/register", newUser);
+      const loginRes = await Axios.post("http://localhost:3003/users/login", {
         email,
         password,
       });
