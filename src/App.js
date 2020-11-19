@@ -8,6 +8,7 @@ import Welcome from './components/Welcome.jsx'
 import Home from './components/Home'
 import CreateFeed from './components/CreateFeed'
 
+
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -15,6 +16,7 @@ export default class App extends Component {
       
     }
   }
+
 
   render() {
     return (
