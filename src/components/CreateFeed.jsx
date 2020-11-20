@@ -8,7 +8,7 @@ export default class CreateFeed extends Component {
         super(props)
         this.state = {
             image: "",
-            description: "",
+            title: "",
             tags: "",
             userName: "",
             redirect: false
@@ -26,7 +26,7 @@ export default class CreateFeed extends Component {
         event.preventDefault()
         const packageUpload = {
             image: this.state.image,
-            description: this.state.description,
+            title: this.state.description,
             tags: this.state.tags,
             userName: this.state.userName
         }
@@ -52,9 +52,9 @@ export default class CreateFeed extends Component {
                 </div>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span htmlFor="description" className="input-group-text">Description</span>
+                        <span htmlFor="title" className="input-group-text">Title</span>
                     </div>
-                    <input onChange={this.handleChange} type="text" className="form-control" name="description" id="description" value={this.state.description}/>
+                    <input onChange={this.handleChange} type="text" className="form-control" name="title" id="title" value={this.state.title}/>
                 </div>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
