@@ -5,7 +5,6 @@ import UserContext from '../context/UserContext'
 const baseURL = 'http://localhost:3003'
 
 export default class Welcome extends Component {
-    // static contextType = UserContext
     constructor(props) {
         super(props)
         this.state = {
