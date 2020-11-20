@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+
 import UserContext from '../context/UserContext'
+
+
+import axios from "axios"
 
 const baseURL = 'http://localhost:3003'
 
@@ -7,9 +11,8 @@ export default class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      displayName: 'Colin',
-      avatar: '',
-      feeds: []
+      username: 'CWhit',
+      feeds:[]
     }
     this.getUser = this.getUser.bind(this)
   }
@@ -31,6 +34,31 @@ export default class Profile extends Component {
         })
       })
   }
+
+  componentDidMount() {
+    this.getFeeds()
+  }
+
+  getFeeds() {
+    axios.get(baseURL + '/feeds')
+    .then(res => {
+      //let matchedPosts=[]
+      //for(let i=0;i<res.data.length;i++)
+      //if(this.state.username===res.data[i].username)
+      //matchedPosts.push(res.data[i])
+      //else do nothing
+        this.setState({
+            feeds: res.data
+            //feeds: matchedPosts
+        })
+    })
+    .catch(error => {
+        console.log(error)
+    })
+  }
+
+
+
   render() {
     return (
       <div>
@@ -38,9 +66,9 @@ export default class Profile extends Component {
         <h3>Welcome {this.state.displayName}!</h3>
         <div className="row">
           {this.state.feeds.map((feed, index) => {
-            return(
+            return (
               <div key={index} className="one-third column">
-                <img className="profile-img" src={feed} alt=""/>
+                <a href={'/feeds/' + feed._id}><img className="profile-img" src={feed.image} alt="" /></a>
               </div>
             )
           })}

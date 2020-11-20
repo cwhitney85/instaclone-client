@@ -7,8 +7,12 @@ import Profile from './components/Profile'
 import Welcome from './components/Welcome.jsx'
 import Home from './components/Home'
 import CreateFeed from './components/CreateFeed'
+
 import Register from './components/auth/register'
 import UserContext from './context/UserContext'
+
+import Show from './components/Show.jsx'
+
 
 const baseURL = 'http://localhost:3003'
 
@@ -70,7 +74,10 @@ export default class App extends Component {
           <Switch>
             <div className="container">
               <Route path="/welcome" component={Welcome} />
-              <Route path="/profile" user={this.state.user} component={Profile}/>
+
+              <Route path="/profile" component={Profile}/>
+              <Route path="/feeds/:id" component={Show} />
+
               <Route path="/" exact component={Home} />
               <Route path="/create" component={CreateFeed}/>
               <Route path="/register" component={Register}/>
