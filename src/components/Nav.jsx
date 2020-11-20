@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { useContext, Component } from 'react'
 import {Link} from 'react-router-dom'
+import UserContext from '../context/UserContext'
 
 export default class Nav extends Component {
   render() {

@@ -1,8 +1,9 @@
-import React, { Component, useState, useContext } from 'react'
+import React, { Component, useState, useContext, createContext } from 'react'
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import ErrorNotice from "../ErrorNotice";
 import Profile from '../Profile'
+import UserContext from '../../context/UserContext'
 
 const baseURL = 'http://localhost:3003'
 
@@ -27,14 +28,15 @@ export default class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    fetch(baseURL + '/users', {
+    fetch(baseURL + '/users/register', {
       method: 'POST',
-      body: JSON.stringify({displayName: this.state.displayName, email: this.state.email, password: this.state.password}),
+      body: JSON.stringify({displayName: this.state.displayName, email: this.state.email, password: this.state.password, passwordCheck: this.state.passwordCheck}),
       headers: {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json())
       .then(data => {
+        // createContext()
         this.setState({
           email: '',
           password: '',
