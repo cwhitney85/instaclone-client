@@ -19,7 +19,7 @@ export default class Profile extends Component {
   }
 
   getUser() {
-    fetch(baseURL + '/users/' + this.state.displayName)
+    fetch(baseURL + '/users/5fb6a0aca5116966733f5d4c')
       .then(data => {
         return data.json()
       }).then(parsedData => {

@@ -34,7 +34,14 @@ export default class Register extends Component {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.setState({
+          email: '',
+          password: '',
+          displayName: '',
+          passwordCheck: ''
+        })
+      })
   }
   render() {
     return (
