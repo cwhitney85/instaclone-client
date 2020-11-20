@@ -10,7 +10,7 @@ export default class CreateFeed extends Component {
             image: "",
             title: "",
             tags: "",
-            userName: "",
+            username: "",
             redirect: false
         }
         this.handleChange = this.handleChange.bind(this)
@@ -28,7 +28,7 @@ export default class CreateFeed extends Component {
             image: this.state.image,
             title: this.state.description,
             tags: this.state.tags,
-            userName: this.state.userName
+            username: this.state.userName
         }
         Axios.post('http://localhost:3003/feeds', packageUpload)
         .then(this.setState({
