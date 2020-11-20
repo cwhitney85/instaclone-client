@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { useContext, Component } from 'react'
 import {Link} from 'react-router-dom'
+import UserContext from '../context/UserContext'
 
 export default class Nav extends Component {
   render() {
@@ -10,8 +11,8 @@ export default class Nav extends Component {
         </Link>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav flex-row ml-auto d-flex">
-            <Link to="/welcome">
-              <li className="nav-item nav-link">Sign up</li>
+            <Link to="/register">
+              <li className="nav-item nav-link">Register</li>
             </Link>
             <Link to="/welcome">
               <li className="nav-item nav-link">Log In</li>

@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
+
+import UserContext from '../context/UserContext'
+
+
 import axios from "axios"
+
 const baseURL = 'http://localhost:3003'
 
 export default class Profile extends Component {
@@ -9,6 +14,25 @@ export default class Profile extends Component {
       username: 'CWhit',
       feeds:[]
     }
+    this.getUser = this.getUser.bind(this)
+  }
+  
+  componentDidMount() {
+    // localStorage.getItem()
+    const { user, setUser } = this.context
+    this.getUser()
+  }
+
+  getUser() {
+    fetch(baseURL + '/users/5fb6a0aca5116966733f5d4c')
+      .then(data => {
+        return data.json()
+      }).then(parsedData => {
+        this.setState({
+          avatar: parsedData.avatar,
+          feeds: parsedData.feeds
+        })
+      })
   }
 
   componentDidMount() {
@@ -38,7 +62,8 @@ export default class Profile extends Component {
   render() {
     return (
       <div>
-        <h3>Welcome {this.state.username}!</h3>
+        <img src={this.state.avatar} />
+        <h3>Welcome {this.state.displayName}!</h3>
         <div className="row">
           {this.state.feeds.map((feed, index) => {
             return (
