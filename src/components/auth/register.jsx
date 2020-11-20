@@ -1,5 +1,5 @@
 import React, { Component, useState, useContext, createContext } from 'react'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
 import axios from "axios";
 import ErrorNotice from "../ErrorNotice";
 import Profile from '../Profile'
@@ -16,10 +16,13 @@ export default class Register extends Component {
       displayName: '',
       passwordCheck: ''
     }
+    
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   
+  
+
   handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value
@@ -47,6 +50,7 @@ export default class Register extends Component {
         .then(data => {
           localStorage.setItem("auth-token", data.token)
           console.log(data.token)
+          
         })
       })
   }

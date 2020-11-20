@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UserContext from '../context/UserContext'
 
 const baseURL = 'http://localhost:3003'
 
@@ -15,6 +16,7 @@ export default class Profile extends Component {
   
   componentDidMount() {
     // localStorage.getItem()
+    const { user, setUser } = this.context
     this.getUser()
   }
 

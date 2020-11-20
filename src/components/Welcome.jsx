@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import UserContext from '../context/UserContext'
 
 const baseURL = 'http://localhost:3003'
 
 export default class Welcome extends Component {
+    // static contextType = UserContext
     constructor(props) {
         super(props)
         this.state = {
@@ -16,6 +18,8 @@ export default class Welcome extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    static contextType = UserContext
     
     handleChange(event) {
         this.setState({
@@ -36,6 +40,7 @@ export default class Welcome extends Component {
     }
 
     render() {
+        const { user, setUser } = this.context
         return(
             <div>
                 {/* <h1 id='welcome'></h1> */}

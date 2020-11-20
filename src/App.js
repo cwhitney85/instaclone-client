@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Axios from 'axios'
@@ -20,8 +20,10 @@ export default class App extends Component {
       user: undefined
     }
   }
+  static contextType= UserContext
 
   componentDidMount() {
+    const user = this.context
     this.getUser()
   }
 
@@ -38,8 +40,13 @@ export default class App extends Component {
       }
     }).then(res => res.json())
       .then(data => {
+        console.log(data)
         if (data) {
-          fetch(baseURL + '/users/' + token)
+          fetch(baseURL + '/users/', {
+            headers: {
+              "x-auth-token": token
+            }
+          })
           .then(res => res.json())
           .then(parsedData => {
             this.setState({
@@ -49,22 +56,15 @@ export default class App extends Component {
           })
         }
       })
-    // fetch(baseURL + '/users/' + this.state.user.displayName)
-    //   .then(data => {
-    //     return data.json()
-    //   }).then(parsedData => {
-    //     this.setState({
-    //       avatar: parsedData.avatar,
-    //       feeds: parsedData.feeds
-    //     })
-    //   })
+
   }
 
 
   render() {
+    
     return (
       <Router>
-        <UserContext.Provider value={this.state}>
+        <UserContext.Provider>
         <div>
           <Nav/>
           <Switch>
