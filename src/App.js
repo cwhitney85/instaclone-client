@@ -7,6 +7,7 @@ import Profile from './components/Profile'
 import Welcome from './components/Welcome.jsx'
 import Home from './components/Home'
 import CreateFeed from './components/CreateFeed'
+import Show from './components/Show.jsx'
 
 
 export default class App extends Component {
@@ -27,6 +28,7 @@ export default class App extends Component {
             <div className="container">
               <Route path="/welcome" component={Welcome} />
               <Route path="/profile" component={Profile}/>
+              <Route path="/feeds/:id" component={Show} />
               <Route path="/" exact component={Home} />
               <Route path="/create" component={CreateFeed}/>
             </div>
