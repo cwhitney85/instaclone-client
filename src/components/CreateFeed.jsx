@@ -42,13 +42,25 @@ export default class CreateFeed extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label className="form-label">Image</label>
-                    <input className="form-input" onChange={this.handleChange} type="text" name="image" id="image" value={this.state.image}/>
-                    <label className="form-label">Description</label>
-                    <input className="form-input" onChange={this.handleChange} type="text" name="description" id="description" value={this.state.description}/>
-                    <label className="form-label">Tags</label>
-                    <input className="form-input" onChange={this.handleChange} type="text" name="tags" id="tags" value={this.state.tags}/>
-                    <button type="submit" className="submit-btn">Submit</button>
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span htmlFor="image" className="input-group-text">Image</span>
+                    </div>
+                    <input onChange={this.handleChange} type="text" className="form-control" name="image" id="image" value={this.state.image}/>
+                </div>
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span htmlFor="description" className="input-group-text">Description</span>
+                    </div>
+                    <input onChange={this.handleChange} type="text" className="form-control" name="description" id="description" value={this.state.description}/>
+                </div>
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span htmlFor="tags" className="input-group-text">Tags</span>
+                    </div>
+                    <input onChange={this.handleChange} type="text" className="form-control" name="tags" id="tags" value={this.state.tags}/>
+                </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
         )
