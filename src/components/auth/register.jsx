@@ -14,7 +14,8 @@ export default class Register extends Component {
       email: '',
       password: '',
       displayName: '',
-      passwordCheck: ''
+      passwordCheck: '',
+      loggedIn: false
     }
     
     this.handleChange = this.handleChange.bind(this)
@@ -49,7 +50,10 @@ export default class Register extends Component {
         }).then(res => res.json())
         .then(data => {
           localStorage.setItem("auth-token", data.token)
-          console.log(data.token)
+          this.setState({
+            loggedIn: true
+          })
+          
           
         })
       })
@@ -58,7 +62,11 @@ export default class Register extends Component {
 
   render() {
     return (
+      
       <div>
+        {this.state.loggedIn ? 
+        <Redirect to="/profile"/> : null
+      } 
         <form onSubmit={this.handleSubmit}>
             <label htmlFor='username'>Username: </label>
             <input type='text' name='username' id='displayName' onChange={this.handleChange} />
