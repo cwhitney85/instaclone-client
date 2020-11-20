@@ -36,15 +36,22 @@ export default class Register extends Component {
       }
     }).then(res => res.json())
       .then(data => {
-        // createContext()
-        this.setState({
-          email: '',
-          password: '',
-          displayName: '',
-          passwordCheck: ''
+        console.log(data)
+        fetch(baseURL + '/users/login', {
+          method: 'POST',
+          body: JSON.stringify({email: this.state.email, password: this.state.password}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(res => res.json())
+        .then(data => {
+          localStorage.setItem("auth-token", data.token)
+          console.log(data.token)
         })
       })
   }
+
+
   render() {
     return (
       <div>
