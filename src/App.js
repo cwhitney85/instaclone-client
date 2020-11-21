@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import Axios from 'axios'
 import Nav from './components/Nav'
 import Profile from './components/Profile'
@@ -71,7 +71,7 @@ export default class App extends Component {
         <UserContext.Provider>
         <div>
           <Nav/>
-          <Switch>
+            <Switch>
             <div className="container">
               <Route path="/welcome" component={Welcome} />
 
@@ -82,7 +82,9 @@ export default class App extends Component {
               <Route path="/create" component={CreateFeed}/>
               <Route path="/register" component={Register}/>
             </div>
-          </Switch>
+          </Switch> 
+        
+  
 
         </div>
         </UserContext.Provider>
