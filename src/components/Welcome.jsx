@@ -40,7 +40,7 @@ export default class Welcome extends Component {
     }
 
     render() {
-        const { user, setUser } = this.context
+        // const { user, setUser } = this.context
         return(
             <div>
                 {/* <h1 id='welcome'></h1> */}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Redirect, Link, Switch} from 'react-router-dom'
 
 
 const baseURL = "http://localhost:3003"
@@ -8,7 +9,8 @@ export default class Home extends Component {
         super(props)
         this.state = {
             love: false,
-            feeds: []
+            feeds: [],
+            loggedIn: true
         }
         this.toggleLove = this.toggleLove.bind(this)
         this.handleAddFeed = this.handleAddFeed.bind(this)
@@ -72,6 +74,9 @@ export default class Home extends Component {
     render() {
         return (
             <div className="home">
+                {this.state.loggedIn ? 
+                <Redirect to="/welcome" /> : null
+            }
                 <button onClick={this.redirectToCreate}>Create</button>
                 {this.state.feeds.map(feed => {
                     return (
