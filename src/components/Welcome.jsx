@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import UserContext from '../context/UserContext'
 
 const baseURL = 'http://localhost:3003'
 
@@ -16,6 +17,8 @@ export default class Welcome extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    static contextType = UserContext
     
     handleChange(event) {
         this.setState({
@@ -26,7 +29,7 @@ export default class Welcome extends Component {
     handleSubmit(event) {
         event.preventDefault()
         const payload = {username: this.state.username, password:this.state.password}
-        axios.post(baseURL + '/placeholder-route/',payload)
+        axios.post(baseURL + '/users/login',payload)
         .then(res => res.json())
         // if(this.state.username === this.state.myName && this.state.password === this.state.myPass) {
         //     document.getElementById('welcome').innerHTML = 'Welcome'
@@ -36,6 +39,7 @@ export default class Welcome extends Component {
     }
 
     render() {
+        const { user, setUser } = this.context
         return(
             <div>
                 {/* <h1 id='welcome'></h1> */}
