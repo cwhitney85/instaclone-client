@@ -78,7 +78,7 @@ export default class Home extends Component {
                         <div className="card home-card">
                             <h5>{feed.username}</h5>
                             <div onClick={() => { this.toggleLove() }} className="card-image">
-                                <img className="card-img" src={feed.image} />
+                               <a href={'/feeds/'+feed._id}> <img className="card-img" src={feed.image} /></a>
                                 {this.state.love ? <td>&hearts;</td> : <td></td>}
                             </div>
                             <div className="card-content">
