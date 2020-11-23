@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Redirect} from 'react-router-dom'
 
 
-const baseURL = 'https://infinite-coast-89197.herokuapp.com/'
+const baseURL = 'https://infinite-coast-89197.herokuapp.com'
 
 export default class Edit extends Component {
     constructor(props) {

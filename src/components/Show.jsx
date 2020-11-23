@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-const baseURL = 'https://infinite-coast-89197.herokuapp.com/'
+const baseURL = 'https://infinite-coast-89197.herokuapp.com'
 
 
 export default class Post extends Component {

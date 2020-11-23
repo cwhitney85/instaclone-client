@@ -5,7 +5,7 @@ import ErrorNotice from "../ErrorNotice";
 import Profile from '../Profile'
 // import UserContext from '../../context/UserContext'
 
-const baseURL = 'https://infinite-coast-89197.herokuapp.com/'
+const baseURL = 'https://infinite-coast-89197.herokuapp.com'
 
 export default class Register extends Component {
   constructor(props) {

@@ -22,7 +22,7 @@ import Register from './components/auth/register'
 import Show from './components/Show.jsx'
 
 
-const baseURL = 'https://infinite-coast-89197.herokuapp.com/'
+const baseURL = 'https://infinite-coast-89197.herokuapp.com'
 
 
 export default class App extends Component {

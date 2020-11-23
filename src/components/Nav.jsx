@@ -2,7 +2,7 @@ import React, { useContext, Component } from 'react'
 import {Link} from 'react-router-dom'
 // import UserContext from '../context/UserContext'
 
-const baseURL = 'https://infinite-coast-89197.herokuapp.com/'
+const baseURL = 'https://infinite-coast-89197.herokuapp.com'
 
 export default class Nav extends Component {
   constructor(props) {
