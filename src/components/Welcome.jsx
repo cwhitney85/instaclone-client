@@ -24,6 +24,8 @@ export default class Welcome extends Component {
         this.getUser()
     }
 
+    
+
     getUser = () => {
         let token = localStorage.getItem("auth-token")
         if (token === null) {

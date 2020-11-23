@@ -13,7 +13,7 @@ export default class Nav extends Component {
     // }
   }
   
- 
+  
 
   getUser = () => {
     let token = localStorage.getItem("auth-token")
@@ -46,12 +46,7 @@ export default class Nav extends Component {
       })
   }
 
-  // handleSubmit = () => {
-  //   localStorage.clear()
-  //   // this.setState({
-  //   //   loggedIn: false
-  //   // })
-  // }
+
 
   render() {
     return (
