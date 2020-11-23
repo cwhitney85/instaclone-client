@@ -7,7 +7,6 @@ import Profile from './components/Profile'
 import Welcome from './components/Welcome.jsx'
 import Home from './components/Home'
 import CreateFeed from './components/CreateFeed'
-
 import Register from './components/auth/register'
 // import UserContext from './context/UserContext'
 
