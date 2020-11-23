@@ -14,7 +14,9 @@ export default class Home extends Component {
             loggedIn: true
         }
         this.handleAddFeed = this.handleAddFeed.bind(this)
+
         this.deleteFeed = this.deleteFeed.bind(this)
+
     }
 
     redirectToCreate = () => {

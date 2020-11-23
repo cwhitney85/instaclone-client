@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
 
+
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
+
 
 
 import Axios from 'axios'
@@ -60,12 +62,14 @@ export default class App extends Component {
               "x-auth-token": token
             }
           })
+
           .then(res => res.json())
           .then(parsedData => {
             this.setState({
               token: token,
               user: parsedData,
               loggedIn: true,
+
               })
             })
         }
@@ -104,6 +108,7 @@ export default class App extends Component {
             </div>
           </Switch> 
         </div>
+
       </Router>
     )
   }
