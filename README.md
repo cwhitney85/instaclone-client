@@ -41,7 +41,7 @@ MERN is an acronym for Mongodb, Express, Node.js and React.js. They are all used
 Our approach taken initially was to break up the project into front-end and back-end. When we started working on the project further we separated the project into parts that each team member decided to focus on. 
 
 ## Notes 
-If there was more time we would add more functionality to the feeds, and profile pages. As well as adding email authentication and password security functionality. 
+If there was more time we would add more functionality to the feeds, profile pages, and changing the user interface to make it more asthetically pleasing. As well as adding email authentication and password security functionality. 
 
 ## Links: 
 https://stark-ocean-08311.herokuapp.com/home
