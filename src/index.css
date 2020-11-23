@@ -24,3 +24,15 @@ code {
   margin: 26px auto;
 
 }
+
+.create {
+  display: flex;
+  align-content: center;
+}
+
+.delete {
+  cursor: pointer;
+  color: red;
+  display: flex;
+  align-items: center;
+}
