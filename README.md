@@ -44,6 +44,6 @@ Our approach taken initially was to break up the project into front-end and back
 If there was more time we would add more functionality to the feeds, and profile pages. As well as adding email authentication and password security functionality. 
 
 ## Links: 
-
+https://stark-ocean-08311.herokuapp.com/home
 
 
