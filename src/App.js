@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Axios from 'axios'
 import Nav from './components/Nav'
 import Profile from './components/Profile'
@@ -17,6 +17,7 @@ import Show from './components/Show.jsx'
 
 const baseURL = 'http://localhost:3003'
 
+
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -25,7 +26,7 @@ export default class App extends Component {
       user: undefined
     }
   }
-  static contextType= UserContext
+  static contextType = UserContext
 
   componentDidMount() {
     const user = this.context
@@ -45,20 +46,19 @@ export default class App extends Component {
       }
     }).then(res => res.json())
       .then(data => {
-        console.log(data)
         if (data) {
           fetch(baseURL + '/users/', {
             headers: {
               "x-auth-token": token
             }
           })
-          .then(res => res.json())
-          .then(parsedData => {
-            this.setState({
-              token: token,
-              user: parsedData
+            .then(res => res.json())
+            .then(parsedData => {
+              this.setState({
+                token: token,
+                user: parsedData
+              })
             })
-          })
         }
       })
 
@@ -66,7 +66,7 @@ export default class App extends Component {
 
 
   render() {
-    
+
     return (
       <Router>
         <UserContext.Provider>
