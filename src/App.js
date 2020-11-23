@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 
+
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
+
+
 import Axios from 'axios'
 import Nav from './components/Nav'
 import Profile from './components/Profile'
 import Welcome from './components/Welcome.jsx'
 import Home from './components/Home'
 import CreateFeed from './components/CreateFeed'
+
+import Edit from './components/Edit.jsx'
+
+
 import Register from './components/auth/register'
 // import UserContext from './context/UserContext'
 
@@ -14,6 +21,7 @@ import Show from './components/Show.jsx'
 
 
 const baseURL = 'http://localhost:3003'
+
 
 export default class App extends Component {
   constructor(props) {
@@ -24,7 +32,7 @@ export default class App extends Component {
       loggedIn: false
     }
   }
-  
+
 
   componentDidMount() {
     this.getUser()
@@ -46,7 +54,6 @@ export default class App extends Component {
       }
     }).then(res => res.json())
       .then(data => {
-        console.log(data)
         if (data) {
           fetch(baseURL + '/users/', {
             headers: {
@@ -59,8 +66,8 @@ export default class App extends Component {
               token: token,
               user: parsedData,
               loggedIn: true,
+              })
             })
-          })
         }
       })
 
@@ -75,7 +82,7 @@ export default class App extends Component {
 
 
   render() {
-    
+
     return (
       <Router>
         <div>
@@ -85,8 +92,13 @@ export default class App extends Component {
             <div className="container">
               <Route path="/" exact component={Welcome} />
               <Route path="/profile" component={Profile}/>
+              <Route path='/edit/:id/edit' component={Edit} />
               <Route path="/feeds/:id" component={Show} />
+
               <Route path="/home"  component={Home} />
+
+
+
               <Route path="/create" component={CreateFeed}/>
               <Route path="/register" component={Register}/>
             </div>

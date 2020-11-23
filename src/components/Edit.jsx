@@ -1,48 +1,76 @@
-import Axios from 'axios'
 import React, { Component } from 'react'
+import axios from 'axios'
 import {Redirect} from 'react-router-dom'
 
 
-export default class CreateFeed extends Component {
+const baseURL = 'http://localhost:3003'
+
+export default class Edit extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            image: "",
-            title: "",
-            tags: "",
-            displayName: "",
-            redirect: false
+                image: "",
+                title: "",
+                tags: "",
+                displayName: "",
+                redirect: false,
+                description: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+    componentDidMount() {
+        this.getPost()
+        console.log(this.state.post)
+    }
+
+    getPost() {
+
+        const id = this.props.match.params.id
+        axios.get(baseURL + '/feeds/' + id)
+            .then(res => {
+                this.setState({
+                    description: res.data.description, 
+                    image: res.data.image,
+                    title: res.data.title,
+                    tags: res.data.tags,
+
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+     
     handleChange(event) {
-        console.log(event.target.value)
-        this.setState({ [event.target.name]: event.target.value})
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     }
 
     handleSubmit(event) {
         event.preventDefault()
-        const packageUpload = {
+        const id = this.props.match.params.id
+        const packageEdit = {
             image: this.state.image,
             title: this.state.title,
             tags: this.state.tags,
-            displayName: this.state.displayName
+            description: this.state.description,
         }
-        Axios.post('http://localhost:3003/feeds', packageUpload)
+        axios.put(baseURL + '/feeds/' + id , packageEdit)
         .then(this.setState({
             redirect: true
         }))
     }
 
-    
     render() {
         if(this.state.redirect) {
-            return <Redirect to={"/"}/>
+            return <Redirect to={"/profile"}/>
         }
-        return (
+        return(
             <div>
+                <h1>Edit post</h1>
                 <form onSubmit={this.handleSubmit}>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
@@ -68,4 +96,3 @@ export default class CreateFeed extends Component {
         )
     }
 }
-

@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { Component } from 'react'
 import {Redirect, Link, Switch} from 'react-router-dom'
 
@@ -12,12 +13,8 @@ export default class Home extends Component {
             feeds: [],
             loggedIn: true
         }
-        this.toggleLove = this.toggleLove.bind(this)
         this.handleAddFeed = this.handleAddFeed.bind(this)
-    }
-
-    toggleLove() {
-        this.setState({ love: !this.state.love })
+        this.deleteFeed = this.deleteFeed.bind(this)
     }
 
     redirectToCreate = () => {
@@ -71,29 +68,46 @@ export default class Home extends Component {
             })
     }
 
+    deleteFeed(id) {
+        fetch(baseURL + '/feeds/' + id, {
+            method: 'DELETE'
+        }).then(response => {
+            const findIndex = this.state.feeds.findIndex(feed => feed._id === id)
+            const copyFeeds = [...this.state.feeds]
+            copyFeeds.splice(findIndex, 1)
+            this.setState({feeds: copyFeeds})
+        })
+    }
+
     render() {
         return (
             <div className="home">
+<<<<<<< HEAD
                 {/* {this.state.loggedIn ? 
                 <Redirect to="/welcome" /> : null
             } */}
                 <button onClick={this.redirectToCreate}>Create</button>
+=======
+                <div className="create"><button className="btn btn-success" onClick={this.redirectToCreate}>Create</button></div>
+>>>>>>> 94cde2b7f74e3b4e4a89eedd38e9173cef3d7d82
                 {this.state.feeds.map(feed => {
                     return (
                         <div className="card home-card">
                             <h5>{feed.username}</h5>
-                            <div onClick={() => { this.toggleLove() }} className="card-image">
-                                <img className="card-img" src={feed.image} />
-                                {this.state.love ? <td>&hearts;</td> : <td></td>}
+                            <div className="card-image">
+                                <a href={'/feeds/' + feed._id}> <img className="card-img" src={feed.image} /></a>
+                                {/* {this.state.love ? <td>&hearts;</td> : <td></td>} */}
+                                
+                                Likes: {feed.likes.length}<br />    
                             </div>
                             <div className="card-content">
                                 <h6>{feed.title}</h6>
-                                <p>{feed.description}</p>
-                                <input type="text" placeholder="add a comment" />
+                                <p>{feed.tags}</p>
+                                <h6 className="delete" onClick={()=>this.deleteFeed(feed._id)}><i class="fas fa-trash"></i></h6>
                             </div>
                         </div>
                     )
-                })}               
+                })}
             </div>
         )
     }
