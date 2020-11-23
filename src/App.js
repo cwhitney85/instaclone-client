@@ -73,12 +73,10 @@ export default class App extends Component {
           <Nav/>
             <Switch>
             <div className="container">
-              <Route path="/welcome" component={Welcome} />
-
+              <Route path="/" exact component={Welcome} />
               <Route path="/profile" component={Profile}/>
               <Route path="/feeds/:id" component={Show} />
-
-              <Route path="/" exact component={Home} />
+              <Route path="/home"  component={Home} />
               <Route path="/create" component={CreateFeed}/>
               <Route path="/register" component={Register}/>
             </div>

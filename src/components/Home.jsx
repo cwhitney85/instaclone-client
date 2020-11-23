@@ -74,9 +74,9 @@ export default class Home extends Component {
     render() {
         return (
             <div className="home">
-                {this.state.loggedIn ? 
+                {/* {this.state.loggedIn ? 
                 <Redirect to="/welcome" /> : null
-            }
+            } */}
                 <button onClick={this.redirectToCreate}>Create</button>
                 {this.state.feeds.map(feed => {
                     return (

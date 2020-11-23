@@ -43,7 +43,7 @@ export default class Register extends Component {
         console.log(data)
         fetch(baseURL + '/users/login', {
           method: 'POST',
-          body: JSON.stringify({email: this.state.email, password: this.state.password}),
+          body: JSON.stringify({displayName: this.state.displayName, password: this.state.password}),
           headers: {
             'Content-Type': 'application/json'
           }
