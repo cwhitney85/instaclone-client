@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import {Redirect, Link, Switch} from 'react-router-dom'
 
 
 const baseURL = "http://localhost:3003"
@@ -9,7 +10,8 @@ export default class Home extends Component {
         super(props)
         this.state = {
             love: false,
-            feeds: []
+            feeds: [],
+            loggedIn: true
         }
         this.handleAddFeed = this.handleAddFeed.bind(this)
         this.deleteFeed = this.deleteFeed.bind(this)
@@ -80,7 +82,13 @@ export default class Home extends Component {
     render() {
         return (
             <div className="home">
+
+                {/* {this.state.loggedIn ? 
+                <Redirect to="/welcome" /> : null
+            } */}
+
                 <div className="create"><button className="btn btn-success" onClick={this.redirectToCreate}>Create</button></div>
+
                 {this.state.feeds.map(feed => {
                     return (
                         <div className="card home-card">

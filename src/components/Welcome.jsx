@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import UserContext from '../context/UserContext'
+// import UserContext from '../context/UserContext'
 
 const baseURL = 'http://localhost:3003'
 
@@ -10,6 +11,7 @@ export default class Welcome extends Component {
         this.state = {
             username: '',
             password: '',
+            loggedIn: false,
             // myName: 'Gavin',
             // myPass: '123'
         }
@@ -18,7 +20,43 @@ export default class Welcome extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    static contextType = UserContext
+    componentDidMount() {
+        this.getUser()
+    }
+
+    
+
+    getUser = () => {
+        let token = localStorage.getItem("auth-token")
+        if (token === null) {
+          localStorage.setItem("auth-token", "")
+          token = ""
+        }
+        fetch(baseURL + '/users/VerifyToken', {
+          method: 'POST',
+          headers: {
+            "x-auth-token": token
+          }
+        }).then(res => res.json())
+          .then(data => {
+            console.log(data)
+            if (data) {
+              fetch(baseURL + '/users/', {
+                headers: {
+                  "x-auth-token": token
+                }
+              })
+              .then(res => res.json())
+              .then(parsedData => {
+                this.setState({
+                  token: token,
+                  loggedIn: true
+                
+                })
+              })
+            }
+          })
+      }
     
     handleChange(event) {
         this.setState({
@@ -28,9 +66,16 @@ export default class Welcome extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        const payload = {username: this.state.username, password:this.state.password}
+        const payload = {displayName: this.state.username, password:this.state.password}
         axios.post(baseURL + '/users/login',payload)
-        .then(res => res.json())
+        .then(response => {
+            localStorage.setItem("auth-token", response.data.token)
+            this.setState({
+                loggedIn: true,
+
+            })
+            console.log(response)
+        })
         // if(this.state.username === this.state.myName && this.state.password === this.state.myPass) {
         //     document.getElementById('welcome').innerHTML = 'Welcome'
         // } else {
@@ -39,10 +84,10 @@ export default class Welcome extends Component {
     }
 
     render() {
-        const { user, setUser } = this.context
+        // const { user, setUser } = this.context
         return(
             <div>
-                {/* <h1 id='welcome'></h1> */}
+                {this.state.loggedIn ? <Redirect to="/home"/> :
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='username'>Username: </label>
                     <input type='text' name='username' id='username' onChange={this.handleChange} />
@@ -52,6 +97,7 @@ export default class Welcome extends Component {
                     <br/>
                     <input type='submit' value='Submit' />
                 </form>
+    }
             </div>
         )
     }

@@ -3,7 +3,7 @@ import { Link, useHistory, Redirect } from "react-router-dom";
 import axios from "axios";
 import ErrorNotice from "../ErrorNotice";
 import Profile from '../Profile'
-import UserContext from '../../context/UserContext'
+// import UserContext from '../../context/UserContext'
 
 const baseURL = 'http://localhost:3003'
 
@@ -43,7 +43,7 @@ export default class Register extends Component {
         console.log(data)
         fetch(baseURL + '/users/login', {
           method: 'POST',
-          body: JSON.stringify({email: this.state.email, password: this.state.password}),
+          body: JSON.stringify({displayName: this.state.displayName, password: this.state.password}),
           headers: {
             'Content-Type': 'application/json'
           }
