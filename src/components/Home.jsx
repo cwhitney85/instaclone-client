@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { Component } from 'react'
 
 
@@ -10,12 +11,7 @@ export default class Home extends Component {
             love: false,
             feeds: []
         }
-        this.toggleLove = this.toggleLove.bind(this)
         this.handleAddFeed = this.handleAddFeed.bind(this)
-    }
-
-    toggleLove() {
-        this.setState({ love: !this.state.love })
     }
 
     redirectToCreate = () => {
@@ -77,9 +73,11 @@ export default class Home extends Component {
                     return (
                         <div className="card home-card">
                             <h5>{feed.username}</h5>
-                            <div onClick={() => { this.toggleLove() }} className="card-image">
-                                <img className="card-img" src={feed.image} />
-                                {this.state.love ? <td>&hearts;</td> : <td></td>}
+                            <div className="card-image">
+                                <a href={'/feeds/' + feed._id}> <img className="card-img" src={feed.image} /></a>
+                                {/* {this.state.love ? <td>&hearts;</td> : <td></td>} */}
+                                
+                                Likes: {feed.likes.length}<br />    
                             </div>
                             <div className="card-content">
                                 <h6>{feed.title}</h6>
@@ -88,7 +86,7 @@ export default class Home extends Component {
                             </div>
                         </div>
                     )
-                })}               
+                })}
             </div>
         )
     }

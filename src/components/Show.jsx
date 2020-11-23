@@ -32,9 +32,11 @@ export default class Post extends Component {
     render() {
         return (
             <div>
+                <h2>Title: {this.state.post.title} </h2>
                 <img src={this.state.post.image} />
                 <h5>Likes: {this.state.post.likes}</h5>
-                <h3>Title: {this.state.post.description} </h3>
+                <h4>Description: {this.state.post.description}</h4>
+                <h6>Tags: {this.state.post.tags} </h6>
             </div>
         )
     }

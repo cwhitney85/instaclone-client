@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Axios from 'axios'
 import Nav from './components/Nav'
 import Profile from './components/Profile'
@@ -16,6 +16,7 @@ import Show from './components/Show.jsx'
 
 const baseURL = 'http://localhost:3003'
 
+
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -24,7 +25,7 @@ export default class App extends Component {
       user: undefined
     }
   }
-  static contextType= UserContext
+  static contextType = UserContext
 
   componentDidMount() {
     const user = this.context
@@ -44,20 +45,19 @@ export default class App extends Component {
       }
     }).then(res => res.json())
       .then(data => {
-        console.log(data)
         if (data) {
           fetch(baseURL + '/users/', {
             headers: {
               "x-auth-token": token
             }
           })
-          .then(res => res.json())
-          .then(parsedData => {
-            this.setState({
-              token: token,
-              user: parsedData
+            .then(res => res.json())
+            .then(parsedData => {
+              this.setState({
+                token: token,
+                user: parsedData
+              })
             })
-          })
         }
       })
 
@@ -65,26 +65,26 @@ export default class App extends Component {
 
 
   render() {
-    
+
     return (
       <Router>
         <UserContext.Provider>
-        <div>
-          <Nav/>
-          <Switch>
-            <div className="container">
-              <Route path="/welcome" component={Welcome} />
+          <div>
+            <Nav />
+            <Switch>
+              <div className="container">
+                <Route path="/welcome" component={Welcome} />
 
-              <Route path="/profile" component={Profile}/>
-              <Route path="/feeds/:id" component={Show} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/feeds/:id" component={Show} />
 
-              <Route path="/" exact component={Home} />
-              <Route path="/create" component={CreateFeed}/>
-              <Route path="/register" component={Register}/>
-            </div>
-          </Switch>
+                <Route path="/" exact component={Home} user={this.deleteUser} />
+                <Route path="/create" component={CreateFeed} />
+                <Route path="/register" component={Register} />
+              </div>
+            </Switch>
 
-        </div>
+          </div>
         </UserContext.Provider>
       </Router>
     )
