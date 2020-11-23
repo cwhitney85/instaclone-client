@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import axios from "axios"
 import { Redirect } from 'react-router-dom'
 
-const baseURL = 'http://localhost:3003'
+const baseURL = 'https://infinite-coast-89197.herokuapp.com/'
 
 export default class Profile extends Component {
   constructor(props) {

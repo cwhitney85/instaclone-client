@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import {Redirect, Link, Switch} from 'react-router-dom'
 
 
-const baseURL = "http://localhost:3003"
+const baseURL = "https://infinite-coast-89197.herokuapp.com/"
 
 export default class Home extends Component {
     constructor(props) {

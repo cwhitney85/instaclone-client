@@ -30,7 +30,7 @@ export default class CreateFeed extends Component {
             tags: this.state.tags,
             displayName: this.state.displayName
         }
-        Axios.post('http://localhost:3003/feeds', packageUpload)
+        Axios.post('https://infinite-coast-89197.herokuapp.com/feeds', packageUpload)
         .then(this.setState({
             redirect: true
         }))
