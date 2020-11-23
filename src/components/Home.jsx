@@ -95,7 +95,6 @@ export default class Home extends Component {
                             </div>
                             <div className="card-content">
                                 <h6>{feed.title}</h6>
-                                <p>{feed.description}</p>
                                 <p>{feed.tags}</p>
                                 <h6 className="delete" onClick={()=>this.deleteFeed(feed._id)}><i class="fas fa-trash"></i></h6>
                             </div>
