@@ -1,27 +1,71 @@
+import Axios from 'axios'
 import React, { Component } from 'react'
+import {Redirect} from 'react-router-dom'
+
 
 export default class CreateFeed extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            image: "",
+            description: "",
+            tags: "",
+            userName: "",
+            redirect: false
+        }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleChange(event) {
+        console.log(event.target.value)
+        this.setState({ [event.target.name]: event.target.value})
+    }
+
+    handleSubmit(event) {
+        event.preventDefault()
+        const packageUpload = {
+            image: this.state.image,
+            description: this.state.description,
+            tags: this.state.tags,
+            userName: this.state.userName
+        }
+        Axios.post('http://localhost:3003/feeds', packageUpload)
+        .then(this.setState({
+            redirect: true
+        }))
+    }
+
+    
     render() {
+        if(this.state.redirect) {
+            return <Redirect to={"/"}/>
+        }
         return (
             <div>
+                <form onSubmit={this.handleSubmit}>
                 <div className="input-group mb-3">
-                    <div className="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile02"/>
-                        <label className="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                    <div className="input-group-prepend">
+                        <span htmlFor="image" className="input-group-text">Image</span>
                     </div>
-                    <div className="input-group-append">
-                        <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
-                    </div>
+                    <input onChange={this.handleChange} type="text" className="form-control" name="image" id="image" value={this.state.image}/>
                 </div>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Title</span>
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span htmlFor="description" className="input-group-text">Description</span>
                     </div>
-                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                    <input onChange={this.handleChange} type="text" className="form-control" name="description" id="description" value={this.state.description}/>
                 </div>
-                <br />
-                <input class="btn btn-primary" type="submit" value="Submit"></input>
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span htmlFor="tags" className="input-group-text">Tags</span>
+                    </div>
+                    <input onChange={this.handleChange} type="text" className="form-control" name="tags" id="tags" value={this.state.tags}/>
+                </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
             </div>
         )
     }
 }
+
