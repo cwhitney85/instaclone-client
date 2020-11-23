@@ -23,3 +23,22 @@ Features: <br/>
 4. A nav bar for easy navigation <br/>
 5. A search bar to find other users <br/>
 6. Show pages for posts and profiles <br/>
+
+
+Technologies Used: <br>
+Express
+Heroku
+Mongodb
+Axios 
+React
+Node.js 
+RESTful API
+Git
+
+MERN is an acronym for Mongodb, Express, Node.js and React.js. They are all used together to make web applications. Node.js and Express are use collectively to serve the back-end while Mongodb is used to store data. The frontend is built using React. All four technologies are JavaScript based which is primarily why they are used together. The instaClone application is deployed using Heroku which is a cloud platform used to get the apps to the market. 
+
+
+Links: 
+
+
+
