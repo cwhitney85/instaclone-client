@@ -82,14 +82,13 @@ export default class Home extends Component {
     render() {
         return (
             <div className="home">
-<<<<<<< HEAD
+
                 {/* {this.state.loggedIn ? 
                 <Redirect to="/welcome" /> : null
             } */}
-                <button onClick={this.redirectToCreate}>Create</button>
-=======
+
                 <div className="create"><button className="btn btn-success" onClick={this.redirectToCreate}>Create</button></div>
->>>>>>> 94cde2b7f74e3b4e4a89eedd38e9173cef3d7d82
+
                 {this.state.feeds.map(feed => {
                     return (
                         <div className="card home-card">
