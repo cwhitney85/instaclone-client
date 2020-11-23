@@ -21,15 +21,18 @@ export default class App extends Component {
     super(props)
     this.state = {
       token: undefined,
-      user: undefined
+      user: undefined,
+      loggedIn: false
     }
   }
-  static contextType= UserContext
+  
 
   componentDidMount() {
-    const user = this.context
     this.getUser()
   }
+
+  
+  
 
   getUser = () => {
     let token = localStorage.getItem("auth-token")
@@ -55,12 +58,20 @@ export default class App extends Component {
           .then(parsedData => {
             this.setState({
               token: token,
-              user: parsedData
+              user: parsedData,
+              loggedIn: true,
             })
           })
         }
       })
 
+  }
+
+  handleSubmit = () => {
+    localStorage.clear()
+    this.setState({
+      loggedIn: false
+    })
   }
 
 
@@ -70,7 +81,8 @@ export default class App extends Component {
       <Router>
         <UserContext.Provider>
         <div>
-          <Nav/>
+          <Nav user={this.state.user} loggedIn={this.state.loggedIn} handleSubmit={this.handleSubmit}/>
+          
             <Switch>
             <div className="container">
               <Route path="/" exact component={Welcome} />

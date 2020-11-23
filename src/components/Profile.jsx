@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 import UserContext from '../context/UserContext'
 
-
 import axios from "axios"
+import { Redirect } from 'react-router-dom'
 
 const baseURL = 'http://localhost:3003'
 
@@ -18,11 +18,11 @@ export default class Profile extends Component {
     this.getUser = this.getUser.bind(this)
   }
   
-  componentDidMount() {
-    // localStorage.getItem()
-    const { user, setUser } = this.context
-    this.getUser()
-  }
+  // componentDidMount() {
+  //   // localStorage.getItem()
+  //   const { user, setUser } = this.context
+  //   this.getUser()
+  // }
 
   // getUser() {
   //   fetch(baseURL + '/users/5fb6a0aca5116966733f5d4c')
@@ -64,7 +64,7 @@ export default class Profile extends Component {
           .then(res => res.json())
           .then(parsedData => {
             this.setState({
-              // token: token,
+              token: token,
               user: parsedData.user
             })
           })
@@ -108,7 +108,7 @@ export default class Profile extends Component {
             )
           })}
         </div>
-        </> : ''}
+        </> : <Redirect to="/"/>}
       </div>
     )
   }

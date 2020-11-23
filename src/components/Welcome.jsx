@@ -49,7 +49,7 @@ export default class Welcome extends Component {
                 this.setState({
                   token: token,
                   loggedIn: true
-                //   user: parsedData.user
+                
                 })
               })
             }
@@ -67,11 +67,12 @@ export default class Welcome extends Component {
         const payload = {displayName: this.state.username, password:this.state.password}
         axios.post(baseURL + '/users/login',payload)
         .then(response => {
+            localStorage.setItem("auth-token", response.data.token)
             this.setState({
                 loggedIn: true,
-                username: '',
-                password: ''
+
             })
+            console.log(response)
         })
         // if(this.state.username === this.state.myName && this.state.password === this.state.myPass) {
         //     document.getElementById('welcome').innerHTML = 'Welcome'
