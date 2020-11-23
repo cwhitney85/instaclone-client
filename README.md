@@ -45,5 +45,6 @@ If there was more time we would add more functionality to the feeds, profile pag
 
 ## Links: 
 https://stark-ocean-08311.herokuapp.com/home
+mongodb://localhost:27017/feeds
 
 
