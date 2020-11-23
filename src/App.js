@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
+
+
+
 import Axios from 'axios'
 import Nav from './components/Nav'
 import Profile from './components/Profile'
@@ -8,8 +13,11 @@ import Welcome from './components/Welcome.jsx'
 import Home from './components/Home'
 import CreateFeed from './components/CreateFeed'
 
+import Edit from './components/Edit.jsx'
+
+
 import Register from './components/auth/register'
-import UserContext from './context/UserContext'
+// import UserContext from './context/UserContext'
 
 import Show from './components/Show.jsx'
 
@@ -22,15 +30,18 @@ export default class App extends Component {
     super(props)
     this.state = {
       token: undefined,
-      user: undefined
+      user: undefined,
+      loggedIn: false
     }
   }
-  static contextType = UserContext
+
 
   componentDidMount() {
-    const user = this.context
     this.getUser()
   }
+
+  
+  
 
   getUser = () => {
     let token = localStorage.getItem("auth-token")
@@ -51,11 +62,14 @@ export default class App extends Component {
               "x-auth-token": token
             }
           })
-            .then(res => res.json())
-            .then(parsedData => {
-              this.setState({
-                token: token,
-                user: parsedData
+
+          .then(res => res.json())
+          .then(parsedData => {
+            this.setState({
+              token: token,
+              user: parsedData,
+              loggedIn: true,
+
               })
             })
         }
@@ -63,29 +77,38 @@ export default class App extends Component {
 
   }
 
+  handleSubmit = () => {
+    localStorage.clear()
+    this.setState({
+      loggedIn: false
+    })
+  }
+
 
   render() {
 
     return (
       <Router>
-        <UserContext.Provider>
-          <div>
-            <Nav />
+        <div>
+          <Nav user={this.state.user} loggedIn={this.state.loggedIn} handleSubmit={this.handleSubmit}/>
+          
             <Switch>
-              <div className="container">
-                <Route path="/welcome" component={Welcome} />
+            <div className="container">
+              <Route path="/" exact component={Welcome} />
+              <Route path="/profile" component={Profile}/>
+              <Route path='/edit/:id/edit' component={Edit} />
+              <Route path="/feeds/:id" component={Show} />
 
-                <Route path="/profile" component={Profile} />
-                <Route path="/feeds/:id" component={Show} />
+              <Route path="/home"  component={Home} />
 
-                <Route path="/" exact component={Home} user={this.deleteUser} />
-                <Route path="/create" component={CreateFeed} />
-                <Route path="/register" component={Register} />
-              </div>
-            </Switch>
 
-          </div>
-        </UserContext.Provider>
+
+              <Route path="/create" component={CreateFeed}/>
+              <Route path="/register" component={Register}/>
+            </div>
+          </Switch> 
+        </div>
+
       </Router>
     )
   }
