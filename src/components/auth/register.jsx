@@ -3,7 +3,7 @@ import { Link, useHistory, Redirect } from "react-router-dom";
 import axios from "axios";
 import ErrorNotice from "../ErrorNotice";
 import Profile from '../Profile'
-import UserContext from '../../context/UserContext'
+// import UserContext from '../../context/UserContext'
 
 const baseURL = 'http://localhost:3003'
 

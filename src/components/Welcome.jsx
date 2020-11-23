@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import UserContext from '../context/UserContext'
+// import UserContext from '../context/UserContext'
 
 const baseURL = 'http://localhost:3003'
 

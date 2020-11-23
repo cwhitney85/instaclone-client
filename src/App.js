@@ -9,7 +9,7 @@ import Home from './components/Home'
 import CreateFeed from './components/CreateFeed'
 
 import Register from './components/auth/register'
-import UserContext from './context/UserContext'
+// import UserContext from './context/UserContext'
 
 import Show from './components/Show.jsx'
 
@@ -79,7 +79,6 @@ export default class App extends Component {
     
     return (
       <Router>
-        <UserContext.Provider>
         <div>
           <Nav user={this.state.user} loggedIn={this.state.loggedIn} handleSubmit={this.handleSubmit}/>
           
@@ -93,11 +92,7 @@ export default class App extends Component {
               <Route path="/register" component={Register}/>
             </div>
           </Switch> 
-        
-  
-
         </div>
-        </UserContext.Provider>
       </Router>
     )
   }

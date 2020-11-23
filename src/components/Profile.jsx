@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import UserContext from '../context/UserContext'
+// import UserContext from '../context/UserContext'
 
 import axios from "axios"
 import { Redirect } from 'react-router-dom'
