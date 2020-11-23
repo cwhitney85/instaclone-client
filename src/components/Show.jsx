@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const baseURL = 'http://localhost:3003'
 
+
 export default class Post extends Component {
     constructor(props) {
         super(props)
@@ -32,9 +33,12 @@ export default class Post extends Component {
     render() {
         return (
             <div>
+                <h3>Title: {this.state.post.title} </h3>
                 <img src={this.state.post.image} />
                 <h5>Likes: {this.state.post.likes}</h5>
-                <h3>Title: {this.state.post.description} </h3>
+                <h6>Description: {this.state.post.description} </h6>
+                <h6>Tags: {this.state.post.tags} </h6>
+                <a href={'/edit/' + this.props.match.params.id + '/edit'}><button>Edit post</button></a>
             </div>
         )
     }

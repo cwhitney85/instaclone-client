@@ -7,6 +7,7 @@ import Profile from './components/Profile'
 import Welcome from './components/Welcome.jsx'
 import Home from './components/Home'
 import CreateFeed from './components/CreateFeed'
+import Edit from './components/Edit.jsx'
 
 import Register from './components/auth/register'
 import UserContext from './context/UserContext'
@@ -76,8 +77,8 @@ export default class App extends Component {
               <Route path="/welcome" component={Welcome} />
 
               <Route path="/profile" component={Profile}/>
+              <Route path='/edit/:id/edit' component={Edit} />
               <Route path="/feeds/:id" component={Show} />
-
               <Route path="/" exact component={Home} />
               <Route path="/create" component={CreateFeed}/>
               <Route path="/register" component={Register}/>
