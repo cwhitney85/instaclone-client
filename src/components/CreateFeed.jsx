@@ -26,7 +26,7 @@ export default class CreateFeed extends Component {
         event.preventDefault()
         const packageUpload = {
             image: this.state.image,
-            title: this.state.description,
+            title: this.state.title,
             tags: this.state.tags,
             displayName: this.state.displayName
         }
