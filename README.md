@@ -44,8 +44,8 @@ Our approach taken initially was to break up the project into front-end and back
 If there was more time we would add more functionality to the feeds, profile pages, and changing the user interface to make it more asthetically pleasing. As well as adding email authentication and password security functionality. 
 
 ## Links: 
-https://stark-ocean-08311.herokuapp.com/home
-mongodb://localhost:27017/feeds
+Front end: https://stark-ocean-08311.herokuapp.com/home
+Back end: https://infinite-coast-89197.herokuapp.com/
 
 ## Attributions:
 Colin - authentication, profile page, nav <br/>
