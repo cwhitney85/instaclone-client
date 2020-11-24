@@ -56,7 +56,6 @@ export default class Home extends Component {
             })
         }).then(res => res.json())
             .then(result => {
-                //console.log(result)
                 const newData = this.state.feeds.map(item => {
                     if (item._id === result._id) {
                         return result

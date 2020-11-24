@@ -3,7 +3,6 @@ import { Link, useHistory, Redirect } from "react-router-dom";
 import axios from "axios";
 import ErrorNotice from "../ErrorNotice";
 import Profile from '../Profile'
-// import UserContext from '../../context/UserContext'
 
 const baseURL = 'https://infinite-coast-89197.herokuapp.com'
 
