@@ -47,4 +47,10 @@ If there was more time we would add more functionality to the feeds, profile pag
 https://stark-ocean-08311.herokuapp.com/home
 mongodb://localhost:27017/feeds
 
+## Attributions:
+Colin - authentication, profile page, nav <br/>
+Raahima - authentication, registration <br/>
+Sarah - home page, upload, delete, create <br/>
+Gavin - edit page, show page, welcome page <br/>
+
 
