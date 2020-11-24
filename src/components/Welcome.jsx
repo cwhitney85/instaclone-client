@@ -81,18 +81,18 @@ export default class Welcome extends Component {
             <div>
                 {this.state.loggedIn ? <Redirect to="/home"/> :
                 <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor='username'>Username: </label>
-                    <input type='text' name='username' id='username' onChange={this.handleChange} />
-                    <br/>
-                    <label htmlFor='password'>Password: </label>
-                    <input type='password' name='password' id='password' onChange={this.handleChange} />
-                    <br/>
-                    <input type='submit' value='Submit' />
-                </form> <br/>
-                <Link>
-                  <h5>Don't have an account? Sign up!</h5>
-                </Link>
+                  <form onSubmit={this.handleSubmit}>
+                      <label htmlFor='username'>Username: </label>
+                      <input type='text' name='username' id='username' onChange={this.handleChange} />
+                      <br/>
+                      <label htmlFor='password'>Password: </label>
+                      <input type='password' name='password' id='password' onChange={this.handleChange} />
+                      <br/>
+                      <input type='submit' value='Submit' />
+                  </form> <br/>
+                  <Link to="/register">
+                    <h5>Don't have an account? Sign up!</h5>
+                  </Link>
                 </div>
             }
             </div>

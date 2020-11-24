@@ -17,7 +17,6 @@ import Edit from './components/Edit.jsx'
 
 
 import Register from './components/auth/register'
-// import UserContext from './context/UserContext'
 
 import Show from './components/Show.jsx'
 
