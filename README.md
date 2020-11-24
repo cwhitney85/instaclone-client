@@ -51,6 +51,6 @@ Back end: https://infinite-coast-89197.herokuapp.com/
 Colin - authentication, profile page, nav <br/>
 Raahima - authentication, registration <br/>
 Sarah - home page, upload, delete, create <br/>
-Gavin - edit page, show page, welcome page <br/>
+Gavin - edit page, show page, welcome page, long-winded attempt at liking/favouriting <br/>
 
 
