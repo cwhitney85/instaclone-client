@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-// import UserContext from '../context/UserContext'
-
 import axios from "axios"
 import { Redirect } from 'react-router-dom'
 
@@ -11,30 +9,12 @@ export default class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      // username: 'CWhit',
       user: {},
       feeds:[]
     }
     this.getUser = this.getUser.bind(this)
   }
   
-  // componentDidMount() {
-  //   // localStorage.getItem()
-  //   const { user, setUser } = this.context
-  //   this.getUser()
-  // }
-
-  // getUser() {
-  //   fetch(baseURL + '/users/5fb6a0aca5116966733f5d4c')
-  //     .then(data => {
-  //       return data.json()
-  //     }).then(parsedData => {
-  //       this.setState({
-  //         avatar: parsedData.avatar,
-  //         feeds: parsedData.feeds
-  //       })
-  //     })
-  // }
 
   componentDidMount() {
     this.getFeeds()
@@ -75,14 +55,8 @@ export default class Profile extends Component {
   getFeeds() {
     axios.get(baseURL + '/feeds')
     .then(res => {
-      //let matchedPosts=[]
-      //for(let i=0;i<res.data.length;i++)
-      //if(this.state.username===res.data[i].username)
-      //matchedPosts.push(res.data[i])
-      //else do nothing
         this.setState({
             feeds: res.data
-            //feeds: matchedPosts
         })
     })
     .catch(error => {

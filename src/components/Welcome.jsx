@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
-// import UserContext from '../context/UserContext'
+
 
 const baseURL = 'https://infinite-coast-89197.herokuapp.com'
 
@@ -12,8 +12,6 @@ export default class Welcome extends Component {
             username: '',
             password: '',
             loggedIn: false,
-            // myName: 'Gavin',
-            // myPass: '123'
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -76,18 +74,13 @@ export default class Welcome extends Component {
             })
             console.log(response)
         })
-        // if(this.state.username === this.state.myName && this.state.password === this.state.myPass) {
-        //     document.getElementById('welcome').innerHTML = 'Welcome'
-        // } else {
-        //     document.getElementById('welcome').innerHTML = 'Not Welcome'
-        // }
     }
 
     render() {
-        // const { user, setUser } = this.context
         return(
             <div>
                 {this.state.loggedIn ? <Redirect to="/home"/> :
+                <div>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='username'>Username: </label>
                     <input type='text' name='username' id='username' onChange={this.handleChange} />
@@ -96,8 +89,12 @@ export default class Welcome extends Component {
                     <input type='password' name='password' id='password' onChange={this.handleChange} />
                     <br/>
                     <input type='submit' value='Submit' />
-                </form>
-    }
+                </form> <br/>
+                <Link>
+                  <h5>Don't have an account? Sign up!</h5>
+                </Link>
+                </div>
+            }
             </div>
         )
     }
